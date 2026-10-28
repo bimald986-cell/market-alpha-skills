@@ -14,14 +14,19 @@ class SkillContractTests(unittest.TestCase):
         section = README.split("## Skill files currently included", 1)[1].split(
             "## Evidence and risk standards", 1
         )[0]
-        paths = re.findall(r"`((?:skills/[^`]+\.md)|SKILL\.md)`", section)
+        listed_paths = []
+        for line in section.splitlines():
+            if line.startswith("- "):
+                match = re.search(r"`([^`]+)`", line)
+                if match:
+                    listed_paths.append(match.group(1))
 
-        self.assertEqual(paths, [
+        self.assertEqual(listed_paths, [
             "SKILL.md",
             "skills/market-regime/SKILL.md",
             "skills/stock-deep-dive/SKILL.md",
         ])
-        for relative_path in paths:
+        for relative_path in listed_paths:
             with self.subTest(path=relative_path):
                 self.assertTrue((ROOT / relative_path).is_file())
 
