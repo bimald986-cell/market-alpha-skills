@@ -14,7 +14,7 @@ class SkillContractTests(unittest.TestCase):
         section = README.split("## Skill files currently included", 1)[1].split(
             "## Evidence and risk standards", 1
         )[0]
-        paths = re.findall(r"`((?:skills/[^`]+\\.md)|SKILL\\.md)`", section)
+        paths = re.findall(r"`((?:skills/[^`]+\.md)|SKILL\.md)`", section)
 
         self.assertEqual(paths, [
             "SKILL.md",
