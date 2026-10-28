@@ -1,36 +1,38 @@
 # Market Alpha Skills
 
-Elite AI agent skills for reading the market, discovering high-quality stocks, and generating high-conviction trading insights.
+A curated set of AI agent skills for evidence-based market research, stock screening, and risk-aware investment analysis.
 
-**Optimized for Bybit users** who trade real U.S. stocks, xStocks, and tokenized equities.
+**Market focus:** Bybit-listed U.S. stock instruments and xStocks, when current availability can be verified.
 
-## What this repo contains
+## What this repository covers
 
-This is a curated collection of agent skills focused on:
+- Market regime and breadth analysis
+- Quality screening using documented frameworks such as CAN SLIM and VCP
+- Single-stock research covering fundamentals, technicals, catalysts, valuation, and risks
+- Structured conviction scoring with explicit uncertainty
+- Clear buy, hold, watchlist, or avoid assessments supported by dated evidence
 
-- Market regime & breadth analysis
-- High-quality stock screening (CAN SLIM, VCP, institutional flow)
-- Single-stock deep dives (fundamentals + technicals + catalysts)
-- Conviction scoring inspired by top investors (Druckermiller-style)
-- Clear, actionable buy / hold / avoid recommendations
+## How to use
 
-## How to use with Grok / Claude / other agents
+1. Install or load the skill files in your supported agent environment.
+2. Ask for a market regime review or a deep dive on a specific ticker.
+3. Require current sources and an explicit as-of timestamp for any claim about today's market.
+4. Review the assumptions, risks, and evidence before making an investment decision.
 
-1. Install the skills from this repo
-2. Ask the agent: "Run market alpha analysis" or "Find the best stocks available on Bybit right now"
-3. The agent will use the skills to deliver structured, high-signal output
+## Skill files currently included
 
-## Skills included
+- `SKILL.md` — End-to-end orchestrator covering market regime, screening, deep dives, conviction scoring, and output format.
+- `skills/market-regime/SKILL.md` — Market health, breadth, trend, volatility, and sector leadership.
+- `skills/stock-deep-dive/SKILL.md` — Single-stock fundamentals, technical setup, catalysts, valuation, risks, and conviction score.
 
-- `market-regime` — Overall market health and exposure recommendation
-- `stock-screener` — Find best stocks using proven frameworks
-- `stock-deep-dive` — Full analysis of one ticker
-- `conviction-score` — 0-100 score with allocation suggestion
+**Inventory note:** `stock-screener` and `conviction-score` are workflow sections in the top-level `SKILL.md`; they are not separate standalone skill files yet. Do not treat them as separately installable skills until those files exist.
 
-## First recommended use
+## Evidence and risk standards
 
-Ask: "Give me the top 3 stocks to buy on Bybit today with conviction scores"
+- Date and identify sources for current prices, market conditions, catalysts, and instrument availability.
+- Separate observed facts from interpretation. If current data cannot be verified, say so instead of guessing.
+- Treat conviction scores as structured judgement, not a probability of profit or a promise of returns.
+- Do not assume a Bybit instrument is an ordinary share. Verify whether it is a share, tokenized product, or another instrument, and identify material differences when evidence is available.
+- Do not imply that analysis executes a trade. Never request or store exchange passwords, API keys, or signing credentials in this repository.
 
----
-
-Built for Bimal | Powered by Grok + open agent skills ecosystem
+The skills support research and decision preparation. They do not guarantee results or replace an individual's risk assessment.
