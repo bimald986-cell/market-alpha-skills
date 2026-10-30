@@ -1,0 +1,32 @@
+name: Skill Contract Checks
+
+on:
+  push:
+    paths:
+      - 'README.md'
+      - 'SKILL.md'
+      - 'skills/**'
+      - 'tests/**'
+      - '.github/workflows/skill-contract.yml'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'SKILL.md'
+      - 'skills/**'
+      - 'tests/**'
+      - '.github/workflows/skill-contract.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  contract-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Run offline skill contract tests
+        run: python -m unittest discover -s tests -v
